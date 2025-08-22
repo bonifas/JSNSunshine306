@@ -17,14 +17,7 @@
       font-family: Arial, sans-serif;
       text-align: center;
     }
-    img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      margin-bottom: 20px;
-    }
-    a {
+    button, a {
       display: inline-block;
       background: #2b7cff;
       color: white;
@@ -32,16 +25,34 @@
       padding: 12px 20px;
       border-radius: 8px;
       font-size: 16px;
+      margin: 10px 0;
+      cursor: pointer;
       transition: background 0.3s ease;
+      border: none;
     }
-    a:hover {
+    button:hover, a:hover {
       background: #1a5ccc;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      margin: 20px 0;
     }
   </style>
 </head>
 <body>
+  <!-- Play Music Button -->
+  <audio id="bg-music" src="GoodnessofGod.mp3" loop></audio>
+  <button onclick="document.getElementById('bg-music').play(); this.innerText='🎵 Music Playing'; this.disabled=true;">
+    ▶️ Play Music
+  </button>
+
+  <!-- Invitation Image -->
   <img src="HouseWarmingjpg.jpg" alt="Housewarming Invitation">
 
+  <!-- Google Maps Link -->
   <a href="https://maps.app.goo.gl/WTUGJSXHFaoQctSC6" target="_blank">
     📍 Open Location in Google Maps
   </a>
