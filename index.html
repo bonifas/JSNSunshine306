@@ -7,31 +7,29 @@
   <style>
     body {
       margin: 0;
-      padding: 20px;
+      padding: 0;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
-      background: #f9f9f9;
+      background: #000;
       font-family: Arial, sans-serif;
       text-align: center;
     }
-    button, a {
-      display: inline-block;
-      background: #2b7cff;
-      color: white;
-      text-decoration: none;
-      padding: 12px 20px;
-      border-radius: 8px;
-      font-size: 16px;
-      margin: 10px 0;
-      cursor: pointer;
-      transition: background 0.3s ease;
-      border: none;
+    video {
+      width: 100%;
+      height: auto;
+      max-height: 100vh;
+      object-fit: cover;
     }
-    button:hover, a:hover {
-      background: #1a5ccc;
+    #invite {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      background: #f9f9f9;
+      min-height: 100vh;
     }
     img {
       max-width: 100%;
@@ -40,21 +38,51 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
       margin: 20px 0;
     }
+    a {
+      display: inline-block;
+      background: #2b7cff;
+      color: white;
+      text-decoration: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: background 0.3s ease;
+    }
+    a:hover {
+      background: #1a5ccc;
+    }
   </style>
 </head>
 <body>
-  <!-- Play Music Button -->
+  <!-- Intro Video -->
+  <video id="intro-video" autoplay playsinline>
+    <source src="house-tour.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- Background Music (optional after video) -->
   <audio id="bg-music" src="GoodnessofGod.mp3" loop></audio>
-  <button onclick="document.getElementById('bg-music').play(); this.innerText='🎵 Music Playing'; this.disabled=true;">
-    ▶️ Play Music
-  </button>
 
-  <!-- Invitation Image -->
-  <img src="HouseWarmingjpg.jpg" alt="Housewarming Invitation">
+  <!-- Invite Section -->
+  <div id="invite">
+    <img src="HouseWarmingjpg.jpg" alt="Housewarming Invitation">
+    <a href="https://maps.app.goo.gl/WTUGJSXHFaoQctSC6" target="_blank">
+      📍 Open Location in Google Maps
+    </a>
+  </div>
 
-  <!-- Google Maps Link -->
-  <a href="https://maps.app.goo.gl/WTUGJSXHFaoQctSC6" target="_blank">
-    📍 Open Location in Google Maps
-  </a>
+  <script>
+    const video = document.getElementById('intro-video');
+    const invite = document.getElementById('invite');
+    const music = document.getElementById('bg-music');
+
+    // When video ends → hide video, show invite, start music
+    video.onended = () => {
+      video.style.display = 'none';
+      invite.style.display = 'flex';
+      // Try to start background music (may be blocked on mobile until user interaction)
+      music.play().catch(err => console.log("Autoplay blocked:", err));
+    };
+  </script>
 </body>
 </html>
