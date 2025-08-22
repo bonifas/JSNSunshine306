@@ -54,13 +54,13 @@
   </style>
 </head>
 <body>
-  <!-- Intro Video -->
-  <video id="intro-video" autoplay playsinline>
+  <!-- Intro Video (silent autoplay) -->
+  <video id="intro-video" autoplay muted playsinline>
     <source src="house-tour.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
 
-  <!-- Background Music (optional after video) -->
+  <!-- Background Music (starts after video ends) -->
   <audio id="bg-music" src="GoodnessofGod.mp3" loop></audio>
 
   <!-- Invite Section -->
@@ -80,7 +80,7 @@
     video.onended = () => {
       video.style.display = 'none';
       invite.style.display = 'flex';
-      // Try to start background music (may be blocked on mobile until user interaction)
+      // Background music may need user interaction on mobile
       music.play().catch(err => console.log("Autoplay blocked:", err));
     };
   </script>
