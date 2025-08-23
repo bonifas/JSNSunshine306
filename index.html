@@ -17,19 +17,24 @@
       font-family: Arial, sans-serif;
       text-align: center;
     }
-    #music-btn {
+    /* Common button styling */
+    .btn {
       margin: 20px;
-      padding: 12px 20px;
-      font-size: 16px;
+      padding: 16px 28px;
+      font-size: 20px;
+      font-weight: bold;
       background: #2b7cff;
       color: white;
       border: none;
-      border-radius: 8px;
+      border-radius: 10px;
       cursor: pointer;
-      transition: background 0.3s ease;
+      transition: background 0.3s ease, transform 0.2s ease;
+      text-decoration: none;
+      display: inline-block;
     }
-    #music-btn:hover {
+    .btn:hover {
       background: #1a5ccc;
+      transform: scale(1.05);
     }
     img {
       max-width: 90%;
@@ -38,32 +43,11 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
       margin: 20px 0;
     }
-    a {
-      display: inline-block;
-      background: #2b7cff;
-      color: white;
-      text-decoration: none;
-      padding: 12px 20px;
-      border-radius: 8px;
-      font-size: 16px;
-      transition: background 0.3s ease;
-      margin-bottom: 20px;
-    }
-    a:hover {
-      background: #1a5ccc;
-    }
-    iframe {
-      border: none;
-      border-radius: 12px;
-      width: 90%;
-      height: 300px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    }
   </style>
 </head>
 <body>
   <!-- Music Play Button -->
-  <button id="music-btn">▶️ Play Music</button>
+  <button id="music-btn" class="btn">▶️ Play Music</button>
 
   <!-- Background Music -->
   <audio id="bg-music" src="GoodnessofGod.mp3" loop></audio>
@@ -72,25 +56,12 @@
   <div id="invite">
     <img src="HouseWarmingjpg.jpg" alt="Housewarming Invitation">
 
-    <!-- Google Maps Link -->
-    <a href="https://maps.app.goo.gl/WTUGJSXHFaoQctSC6" target="_blank">
+    <!-- Google Maps Link Only -->
+    <a href="https://maps.app.goo.gl/WTUGJSXHFaoQctSC6" target="_blank" class="btn">
       📍 Open Location in Google Maps
     </a>
-
-    <!-- Embedded Google Maps -->
-    <iframe 
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3890.2768156324737!2d77.5946!3d12.9716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1670d8a4c9f7%3A0xf1a09f89e86b21d6!2sBangalore!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
-      allowfullscreen="" 
-      loading="lazy" 
-      referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
   </div>
 
   <script>
     const musicBtn = document.getElementById('music-btn');
     const music = document.getElementById('bg-music');
-
-    // Play music when button is clicked
-    musicBtn.addEventListener('click', () => {
-      music.play();
-      musicBtn.style.display = 'none'; // Hide button after pl
